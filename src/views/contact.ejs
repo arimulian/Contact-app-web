@@ -1,0 +1,56 @@
+<div class="container">
+     <div class="row">
+          <div class="col mt-4">
+               <h2>Contact List</h2>
+               <a href="/contact/add-contact" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Add Contact</a>
+               <% if (message.length !==0) { %>
+                    <div class="alert alert-success mt-3" role="alert">
+                         <%= message %>
+                    </div>
+                    <% } %>
+                         <table class="table table-bordered mt-3">
+                              <thead>
+                                   <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Nama</th>
+                                        <th scope="col">No phone</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Action</th>
+                                   </tr>
+                              </thead>
+                              <tbody>
+                                   <% if (contacts.length===0) { %>
+                                        <tr>
+                                             <td colspan="5">
+
+                                                  <div class="alert alert-warning fw-bold" role="alert">
+                                                       Contact list is empty
+                                                  </div>
+                                             </td>
+                                        </tr>
+                                        <% } %>
+                                             <% contacts.forEach((contact,i)=> { i++ %>
+                                                  <tr>
+                                                       <th scope="row">
+                                                            <%= i %>
+                                                       </th>
+                                                       <td>
+                                                            <%= contact.nama %>
+                                                       </td>
+                                                       <td>
+                                                            <%= contact.noHP %>
+                                                       </td>
+                                                       <td>
+                                                            <%= contact.email %>
+                                                       </td>
+                                                       <td><a href="/contact/<%= contact.nama  %>"
+                                                                 class="btn btn-primary badge"><i
+                                                                      class="bi bi-info-circle"></i>
+                                                                 Detail</a></td>
+                                                  </tr>
+                                                  <% }) %>
+                              </tbody>
+                         </table>
+          </div>
+     </div>
+</div>
